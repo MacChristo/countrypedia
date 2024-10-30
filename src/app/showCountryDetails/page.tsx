@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useCountryContext } from "../components/CountryContext";
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const CountryDetails = () => {
   const router = useRouter();
@@ -17,9 +18,9 @@ const CountryDetails = () => {
     if (!selectedCountry.borders) return [];
 
     //This maps through the selected country border array and uses the code to find countries that matches the code.
-    return selectedCountry.borders.map((borderCode: any) => {
+    return selectedCountry.borders.map((borderCode: string) => {
       const borderCountry = countries.find(
-        (country: any) => country.cca3 === borderCode
+        (country) => country.cca3 === borderCode
       );
       return borderCountry ? borderCountry.name.common : borderCode;
     });
@@ -30,7 +31,7 @@ const CountryDetails = () => {
     return !borderCountryNames || borderCountryNames.length === 0 ? (
       <p>No border countries available for {selectedCountry.name.common}</p>
     ) : (
-      borderCountryNames.map((bc: any, index: number) => (
+      borderCountryNames.map((bc: string, index: number) => (
         <span className="text-[0.85rem]" key={index}>
           {bc}
         </span>
@@ -55,8 +56,10 @@ const CountryDetails = () => {
           </button>
         </div>
         <div className="flex flex-row w-full justify-between gap-[60px]">
-          <img
+          <Image
             className="w-[50%] h-auto"
+            width={100}
+            height={100}
             src={selectedCountry.flags.png}
             alt={selectedCountry.flags.alt}
           />
@@ -108,7 +111,7 @@ const CountryDetails = () => {
                   <p className="font-semibold text-sm">
                     Currency:{" "}
                     <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.currencies[0]}
+                      {selectedCountry.name.official}
                     </span>
                   </p>
                 </div>

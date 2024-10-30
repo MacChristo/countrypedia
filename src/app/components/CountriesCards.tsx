@@ -1,27 +1,36 @@
 "use client";
 import React, { useState } from "react";
-import useSWR from "swr";
 import { useRouter } from "next/navigation";
 import { IoMdSearch } from "react-icons/io";
 import { useCountryContext } from "./CountryContext";
-// import { CountryContext } from "./context";
+import { CountryTypes } from "./CountryContext";
+import Image from "next/image";
+
+// interface countryType {
+//   name: { common: string };
+//   flags: { png: string; alt: string };
+//   population: number;
+//   region: string;
+//   capital: string;
+//   borders: [];
+//   official: string;
+// }
+
+interface itemType {
+  region: string;
+  name: { common: string };
+}
 
 const CountryCards = () => {
-  // const url: string = "https://restcountries.com/v3.1/all";
-  // const fetcher = () => fetch(url).then((res) => res.json());
-
-  // const { data, error, isValidating } = useSWR(url, fetcher);
-  // console.log(data);
-
   //selectedRegion is a variable that holds the selected filter region
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [searchTerms, setSearchTerms] = useState<string>("");
 
   //this changes the value of the selectedRegion to the one that was clicked
-  const handleFilterChange = (event: any) => {
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRegion(event.target.value);
   };
-  const handleSearchChange = (event: any) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerms(event.target.value);
   };
 
@@ -51,13 +60,13 @@ const CountryCards = () => {
   }
 
   //handles selecting the country and storing the selected country
-  const handleCountryClick = (e: any) => {
+  const handleCountryClick = (e: CountryTypes) => {
     setSelectedCountry(e);
     router.push("./showCountryDetails");
   };
 
   //This uses the filter method to filter the given array using the selected region and stores them in filteredCountries array
-  const filteredCountries = countries.filter((item: any) => {
+  const filteredCountries = countries.filter((item: itemType) => {
     if (selectedRegion !== "All" && item.region !== selectedRegion) {
       return false;
     }
@@ -127,7 +136,7 @@ const CountryCards = () => {
           </>
         ) : (
           filteredCountries &&
-          filteredCountries.map((country: any, index: any) => (
+          filteredCountries.map((country: CountryTypes, index: number) => (
             <div
               className="w-[100%] h-auto flex flex-col justify-start items-start hover:cursor-pointer"
               key={index}
@@ -135,9 +144,15 @@ const CountryCards = () => {
                 handleCountryClick(country);
               }}
             >
-              <img
+              <Image
                 src={country.flags.png}
-                alt={country.flags.alt}
+                alt={
+                  !country.flags.alt
+                    ? "This is the country flag"
+                    : country.flags.alt
+                }
+                width={400}
+                height={130}
                 className="w-[inherit] h-[130px] flag-rounded"
               />
               <div className="flex  flex-col items-start gap-2 card-details">
