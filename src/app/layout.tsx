@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
+import { Nunito_Sans } from "@next/font/google";
 import localFont from "next/font/local";
+import Head from "next/head";
 import "./globals.css";
 import { CountryProvider } from "./components/CountryContext";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["300", "600", "800"],
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${nunitoSans.className} antialiased font-style font-light bg-[#ffffff]`}
       >
         <CountryProvider>
           {children}

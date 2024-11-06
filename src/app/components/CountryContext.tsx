@@ -15,11 +15,12 @@ export interface CountryTypes {
   region: string;
   subregion: string;
   tld: string;
-  currencies: number;
+  currencies: { currencyName: { name: string } };
   capital: string;
   borders: [];
   official: string;
   cca3: string;
+  languages: string;
 }
 
 interface CountryContextType {

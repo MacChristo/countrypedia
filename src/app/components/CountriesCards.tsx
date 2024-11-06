@@ -6,16 +6,6 @@ import { useCountryContext } from "./CountryContext";
 import { CountryTypes } from "./CountryContext";
 import Image from "next/image";
 
-// interface countryType {
-//   name: { common: string };
-//   flags: { png: string; alt: string };
-//   population: number;
-//   region: string;
-//   capital: string;
-//   borders: [];
-//   official: string;
-// }
-
 interface itemType {
   region: string;
   name: { common: string };
@@ -81,12 +71,13 @@ const CountryCards = () => {
 
   return (
     <>
-      <div className="flex flex-row w-[100%] justify-between mt-6">
+      <div className="flex flex-row w-[100%] justify-between mt-6 xxs:flex-col xxs:gap-3">
         <form
           action="PUT"
           onSubmit={(e) => {
             e.preventDefault();
           }}
+          className="flex"
         >
           <div className="w-[300px] flex flex-row items-center gap-2 bg-[#fff] p-2 rounded-[2px] search-shadow">
             <IoMdSearch />
@@ -101,7 +92,7 @@ const CountryCards = () => {
             />
           </div>
         </form>
-        <div className="flex flex-row items-center gap-2 bg-[#fff] p-2 rounded-[2px] search-shadow">
+        <div className="flex flex-row items-center gap-2 bg-[#fff] p-2 rounded-[2px] search-shadow w-full">
           <select
             title="Region"
             value={selectedRegion}
@@ -138,7 +129,7 @@ const CountryCards = () => {
           filteredCountries &&
           filteredCountries.map((country: CountryTypes, index: number) => (
             <div
-              className="w-[100%] h-auto flex flex-col justify-start items-start hover:cursor-pointer"
+              className="w-[100%] h-auto flex flex-col justify-start items-start hover:cursor-pointer card-shadow rounded-[10px]"
               key={index}
               onClick={() => {
                 handleCountryClick(country);
@@ -153,7 +144,7 @@ const CountryCards = () => {
                 }
                 width={400}
                 height={130}
-                className="w-[inherit] h-[130px] flag-rounded"
+                className="w-[inherit] h-[130px] aspect-video flag-rounded z-[999]"
               />
               <div className="flex  flex-col items-start gap-2 card-details">
                 <h1 className="mb-3 font-bold text-[1.25rem]">
