@@ -16,6 +16,16 @@ export const metadata: Metadata = {
   description: "See important information about different countries",
   keywords:
     "country, countries, REST API countries, macchristo, flags, information about country",
+  openGraph: {
+    images: [
+      {
+        url: "../public/Countrypedia-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "This is Countrypedia",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
