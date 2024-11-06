@@ -9,15 +9,22 @@ const BackToTop = () => {
   };
 
   const [display, setDisplay] = useState("none");
+
   useEffect(() => {
     const handleScroll = () => {
-      () => (window.scrollY >= 20 ? setDisplay("Block") : setDisplay("none"));
+      if (window.scrollY >= 20) {
+        setDisplay("block");
+      } else {
+        setDisplay("none");
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-    //the return statement is what unmounts or removes the event from the component
+    // The return statement removes the event listener when the component unmounts
   }, []);
+
   return (
     <BsFillArrowUpSquareFill
       className="back-to-top flex justify-center"
