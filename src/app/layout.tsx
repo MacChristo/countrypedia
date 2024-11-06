@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "@next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import Head from "next/head";
 import "./globals.css";
