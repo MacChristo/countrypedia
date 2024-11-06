@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "../public/Countrypedia-preview.png",
+        url: ".../Countrypedia-preview.png",
         width: 1200,
         height: 630,
         alt: "This is Countrypedia",
