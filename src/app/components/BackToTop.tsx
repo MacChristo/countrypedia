@@ -8,10 +8,10 @@ const BackToTop = () => {
     document.documentElement.scrollTop = 0;
   };
 
-  let [display, setDisplay] = useState("none");
+  const [display, setDisplay] = useState("none");
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollY >= 20 ? setDisplay("Block") : setDisplay("none");
+      () => (window.scrollY >= 20 ? setDisplay("Block") : setDisplay("none"));
     };
     window.addEventListener("scroll", handleScroll);
 
