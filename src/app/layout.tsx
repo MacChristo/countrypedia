@@ -16,14 +16,38 @@ export const metadata: Metadata = {
   description: "See important information about different countries",
   keywords:
     "country, countries, REST API countries, macchristo, flags, information about country",
+  // openGraph: {
+  //   images: [
+  //     {
+  //       url: "https://countrypedia-macchristos-projects.vercel.app//Countrypedia-preview.png",
+  //       width: 1200,
+  //       height: 630,
+  //       alt: "This is Countrypedia",
+  //     },
+  //   ],
+  // }
   openGraph: {
+    type: "website",
+    url: "https://countrypedia-macchristos-projects.vercel.app",
+    title: "Countrypedia",
+    description: "See important information about different countries",
+    siteName: "Countrypedia",
     images: [
       {
-        url: "https://countrypedia-macchristos-projects.vercel.app//Countrypedia-preview.png",
+        url: "https://countrypedia-macchristos-projects.vercel.app/Countrypedia-preview.png",
         width: 1200,
         height: 630,
         alt: "This is Countrypedia",
       },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Countrypedia",
+    description: "See important information about different countries",
+    images: [
+      "https://countrypedia-macchristos-projects.vercel.app/Countrypedia-preview.png",
     ],
   },
 };
