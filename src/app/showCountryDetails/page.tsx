@@ -11,7 +11,20 @@ const CountryDetails = () => {
   const { selectedCountry, countries } = useCountryContext();
 
   if (!selectedCountry) {
-    return <p>No country was selected</p>;
+    return (
+      <div className="flex flex-col items-center gap-3 w-screen h-screen justify-center items-center">
+        <p className="text-2xl">No country was selected</p>
+        <button
+          className=" bg-[#fff] w-[100px] p-2 rounded-[2px] search-shadow"
+          type="button"
+          onClick={() => {
+            router.push("./");
+          }}
+        >
+          Go Back
+        </button>
+      </div>
+    );
   }
 
   const getCountryBorderNames = () => {
@@ -60,9 +73,9 @@ const CountryDetails = () => {
             Back
           </button>
         </div>
-        <div className="flex flex-row w-full justify-between gap-[60px] xxs:gap-5 xxs:flex-col">
+        <div className="flex lg:flex-row w-full justify-between gap-[60px] xxs:gap-9 xxs:flex-col">
           <Image
-            className="w-[50%] xxs:w-full h-auto aspect-video"
+            className="lg:w-[50%] md:w-[50%] xxs:w-full h-auto aspect-video"
             width={100}
             height={100}
             src={selectedCountry.flags.png}
@@ -72,76 +85,74 @@ const CountryDetails = () => {
                 : selectedCountry.flags.alt
             }
           />
-          <div className="w-full rounded-none">
-            <div className="flex  flex-col items-start gap-2 bg-transparent pt-3 pr-4 pb-6 pl-4 xxs:pr-0 xxs:pl-0">
-              <h1 className="mb-3 font-bold text-[1.35rem]">
-                {selectedCountry.name.common}
-              </h1>
-              <div className="w-full flex flex-row gap-14 xxs:flex-col xxs:gap-10">
-                <div className="flex  flex-col items-start gap-3 w-1/2 xxs:w-full">
-                  <p className="font-semibold text-sm">
-                    Native Name:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.name.official}
-                    </span>
-                  </p>
-                  <p className="font-semibold text-sm">
-                    Population:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.population.toLocaleString()}
-                    </span>
-                  </p>
-                  <p className="font-semibold text-sm">
-                    Region:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.region}
-                    </span>
-                  </p>
-                  <p className="font-semibold text-sm">
-                    Sub Region:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.subregion}
-                    </span>
-                  </p>
-                  <p className="font-semibold text-sm">
-                    Capital:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.capital}
-                    </span>
-                  </p>
-                </div>
-                <div className="flex  flex-col items-start gap-3 w-1/2 xxs:w-full">
-                  <p className="font-semibold text-sm">
-                    Top level domain:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.tld[0]}
-                    </span>
-                  </p>
-                  <p className="font-semibold text-sm">
-                    Currency:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.currencies &&
-                        Object.values(selectedCountry.currencies)
-                          .map((currencyName) => `${currencyName.name}`)
-                          .join(", ")}
-                    </span>
-                  </p>
-                  <p className="font-semibold text-sm">
-                    Languages:{" "}
-                    <span className="text-[0.85rem] font-normal">
-                      {selectedCountry.languages &&
-                        Object.values(selectedCountry.languages)
-                          .map((languageName) => `${languageName}`)
-                          .join(", ")}
-                    </span>
-                  </p>
-                </div>
+          <div className="flex  flex-col items-start gap-2 bg-transparent pt-3 pr-4 pb-6 pl-4 xxs:pr-0 xxs:pl-0">
+            <h1 className="mb-3 font-bold text-[1.35rem]">
+              {selectedCountry.name.common}
+            </h1>
+            <div className="w-full flex md:flex-row lg:flex-row gap-14 xxs:flex-col xxs:gap-10">
+              <div className="flex  flex-col items-start gap-3 w-1/2 xxs:w-full">
+                <p className="font-semibold text-sm">
+                  Native Name:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.name.official}
+                  </span>
+                </p>
+                <p className="font-semibold text-sm">
+                  Population:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.population.toLocaleString()}
+                  </span>
+                </p>
+                <p className="font-semibold text-sm">
+                  Region:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.region}
+                  </span>
+                </p>
+                <p className="font-semibold text-sm">
+                  Sub Region:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.subregion}
+                  </span>
+                </p>
+                <p className="font-semibold text-sm">
+                  Capital:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.capital}
+                  </span>
+                </p>
               </div>
-              <div className="flex flex-row items-center w-full gap-2 mt-7 xxs:flex-col xxs:items-start">
-                <h1 className="text-sm font-semibold">Borders Countries: </h1>
-                <div className="flex flex-row gap-5 xxs:gap-3 xxs:flex-wrap">
-                  <Borders />
-                </div>
+              <div className="flex  flex-col items-start gap-3 w-1/2 xxs:w-full">
+                <p className="font-semibold text-sm">
+                  Top level domain:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.tld[0]}
+                  </span>
+                </p>
+                <p className="font-semibold text-sm">
+                  Currency:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.currencies &&
+                      Object.values(selectedCountry.currencies)
+                        .map((currencyName) => `${currencyName.name}`)
+                        .join(", ")}
+                  </span>
+                </p>
+                <p className="font-semibold text-sm">
+                  Languages:{" "}
+                  <span className="text-[0.85rem] font-normal">
+                    {selectedCountry.languages &&
+                      Object.values(selectedCountry.languages)
+                        .map((languageName) => `${languageName}`)
+                        .join(", ")}
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-row items-center w-full gap-2 mt-7 xxs:flex-col xxs:items-start">
+              <h1 className="text-sm font-semibold">Borders Countries: </h1>
+              <div className="flex flex-row gap-5 xxs:gap-3 xxs:flex-wrap">
+                <Borders />
               </div>
             </div>
           </div>

@@ -71,7 +71,7 @@ const CountryCards = () => {
 
   return (
     <>
-      <div className="flex flex-row w-[100%] justify-between mt-6 xxs:flex-col xxs:gap-3">
+      <div className="flex md:flex-row lg:flex-row w-[100%] justify-between mt-6 xxs:flex-col xxs:gap-3">
         <form
           action="PUT"
           onSubmit={(e) => {
@@ -88,11 +88,11 @@ const CountryCards = () => {
               value={searchTerms}
               onChange={handleSearchChange}
               placeholder="Search for a country..."
-              className="w-[80%] text-xs outline-none"
+              className="w-full p-2 pl-0 text-xs outline-none"
             />
           </div>
         </form>
-        <div className="flex flex-row items-center gap-2 bg-[#fff] p-2 rounded-[2px] search-shadow w-full">
+        <div className="flex flex-row  items-center gap-2 bg-[#fff] p-2 rounded-[2px] search-shadow w-[120px]">
           <select
             title="Region"
             value={selectedRegion}
@@ -109,14 +109,15 @@ const CountryCards = () => {
           </select>
         </div>
       </div>
-      <div className="grid-ctn gap-10 w-[100%]">
+      <div className="grid-ctn gap-10 w-[100%] mb-8">
         {filteredCountries.length === 0 ? (
-          <>
+          <div className="flex flex-col gap-3 items-start">
             <p>
               No country in <strong>{selectedRegion}</strong> matches your
               search: <em>{searchTerms}</em>
             </p>
             <button
+              className=" bg-[#fff] p-2 rounded-[2px] search-shadow"
               type="button"
               onClick={() => {
                 setSearchTerms("");
@@ -124,7 +125,7 @@ const CountryCards = () => {
             >
               Cancel search
             </button>
-          </>
+          </div>
         ) : (
           filteredCountries &&
           filteredCountries.map((country: CountryTypes, index: number) => (
@@ -144,7 +145,7 @@ const CountryCards = () => {
                 }
                 width={400}
                 height={130}
-                className="w-[inherit] h-[130px] aspect-video flag-rounded z-[999]"
+                className="w-[inherit] h-[130px] md:h-[170px] lg:h-[130px] aspect-video flag-rounded z-[999]"
               />
               <div className="flex  flex-col items-start gap-2 card-details">
                 <h1 className="mb-3 font-bold text-[1.25rem]">
