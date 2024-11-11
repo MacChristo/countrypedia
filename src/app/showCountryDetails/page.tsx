@@ -85,7 +85,7 @@ const CountryDetails = () => {
                 : selectedCountry.flags.alt
             }
           />
-          <div className="flex  flex-col items-start gap-2 bg-transparent pt-3 pr-4 pb-6 pl-4 xxs:pr-0 xxs:pl-0">
+          <div className="flex  flex-col items-start gap-2 bg-transparent pt-3 pr-4 pb-6 pl-4 xxs:pr-0 xxs:pl-0 lg:w-[50%]">
             <h1 className="mb-3 font-bold text-[1.35rem]">
               {selectedCountry.name.common}
             </h1>
