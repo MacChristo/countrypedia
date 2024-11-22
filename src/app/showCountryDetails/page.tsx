@@ -12,7 +12,7 @@ const CountryDetails = () => {
 
   if (!selectedCountry) {
     return (
-      <div className="flex flex-col items-center gap-3 w-screen h-screen justify-center items-center">
+      <div className="flex flex-col gap-3 w-screen h-screen justify-center items-center">
         <p className="text-2xl">No country was selected</p>
         <button
           className=" bg-[#fff] w-[100px] p-2 rounded-[2px] search-shadow"
@@ -48,7 +48,7 @@ const CountryDetails = () => {
     ) : (
       borderCountryNames.map((bc: string, index: number) => (
         <span
-          className="text-[0.65rem] flex flex-row items-center gap-2 bg-[#fff] py-2 px-4 xxs:py-[0.35rem] xxs:px-3 rounded-[2px] search-shadow"
+          className="text-[0.65rem] flex flex-row items-center gap-2 bg-[#fff] dark:bg-[#2b3743] py-2 px-4 xxs:py-[0.35rem] xxs:px-3 rounded-[2px] search-shadow"
           key={index}
         >
           {bc}
@@ -64,7 +64,7 @@ const CountryDetails = () => {
         <div className="flex flex-row w-[100%] justify-between mt-6">
           <button
             type="button"
-            className="flex flex-row items-center gap-2 bg-[#fff] p-2 rounded-[2px] search-shadow"
+            className="flex flex-row items-center gap-2 bg-[#fff] dark:bg-[#2b3743] dark:text-[#ffffff] text-[#2b3743] p-2 rounded-[2px] search-shadow"
             onClick={() => {
               router.push("./");
             }}
@@ -85,7 +85,7 @@ const CountryDetails = () => {
                 : selectedCountry.flags.alt
             }
           />
-          <div className="flex  flex-col items-start gap-2 bg-transparent pt-3 pr-4 pb-6 pl-4 xxs:pr-0 xxs:pl-0 lg:w-[50%]">
+          <div className="flex  flex-col items-start gap-2 bg-transparent pt-3 pr-4 pb-6 pl-4 xxs:pr-0 xxs:pl-0 lg:w-[50%] dark:text-[#ffffff] text-[#2b3743]">
             <h1 className="mb-3 font-bold text-[1.35rem]">
               {selectedCountry.name.common}
             </h1>
@@ -150,7 +150,9 @@ const CountryDetails = () => {
               </div>
             </div>
             <div className="flex flex-row items-center w-full gap-2 mt-7 xxs:flex-col xxs:items-start">
-              <h1 className="text-sm font-semibold">Borders Countries: </h1>
+              <h1 className="text-sm font-semibold dark:text-[#ffffff] text-[#2b3743]">
+                Borders Countries:{" "}
+              </h1>
               <div className="flex flex-row gap-5 xxs:gap-3 xxs:flex-wrap">
                 <Borders />
               </div>

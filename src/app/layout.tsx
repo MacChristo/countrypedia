@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunitoSans.variable} antialiased font-sans font-light bg-[#ffffff]`}
+        className={`${nunitoSans.variable} antialiased font-sans font-light bg-[#ffffff] dark:bg-[#202d36]`}
       >
         <CountryProvider>
           {children}

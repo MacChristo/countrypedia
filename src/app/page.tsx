@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import { CountryCards } from "./components/CountriesCards";
 import BackToTop from "./components/BackToTop";
+import ThemeToggle from "./components/ThemeToggle";
 
 export default function Home() {
   return (

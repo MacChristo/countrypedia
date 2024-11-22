@@ -7,7 +7,6 @@
   --foreground: #171717;
 }
 
-
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -82,10 +81,24 @@ body {
   color: #0072c7;
 }
 
+.options-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+  position: absolute;
+  z-index: 9999;
+  width: inherit;
+  top: 120px;
+}
+
 @media screen and (min-width: 320px) {
   .grid-ctn {
     grid-template-columns: auto;
     gap: 40px;
+  }
+  .options-ctn {
+    top: 125px;
   }
 }
 
@@ -93,17 +106,26 @@ body {
   .grid-ctn {
     grid-template-columns: auto auto;
   }
+  .options-ctn {
+    top: 125px;
+  }
 }
 
 @media screen and (min-width: 640px) {
   .grid-ctn {
     grid-template-columns: auto auto;
   }
+  .options-ctn {
+    top: 125px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .grid-ctn {
     grid-template-columns: auto auto;
+  }
+  .options-ctn {
+    top: 125px;
   }
 }
 
