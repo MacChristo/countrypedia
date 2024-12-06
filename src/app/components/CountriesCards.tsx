@@ -44,7 +44,7 @@ const CountryCards = () => {
       return (
         <>
           <i className="flex items-center self-center">
-            <h2 className="flex items-center self-center text-3xl text-red-700">
+            <h2 className="flex items-center self-center text-3xl text-red-700 dark:text-[#ffffff]">
               Error encountered while fetching data
             </h2>
           </i>
